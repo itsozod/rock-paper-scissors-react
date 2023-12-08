@@ -2,4 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #473144;
+  padding: 10px 5px;
+}
+.header_title {
+  color: #fff;
+  text-shadow: 2px 2px 5px red;
 }
