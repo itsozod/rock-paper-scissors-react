@@ -1,9 +1,12 @@
 import "./App.css";
-import { useState } from "react";
-
+import { Header } from "./components/header/Header";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 }
 
 export default App;
