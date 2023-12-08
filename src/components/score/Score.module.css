@@ -1,0 +1,10 @@
+.scoreContainer {
+  display: flex;
+  justify-content: center;
+}
+.playerScore,
+.computerScore {
+  font-weight: bold;
+  font-size: 28px;
+  margin: 30px;
+}

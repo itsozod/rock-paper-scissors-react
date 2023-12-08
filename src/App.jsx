@@ -5,6 +5,8 @@ import { Game } from "./components/game/Game";
 import { weapons } from "./Weapon";
 import { Restart } from "./components/restart/Restart";
 import { Choice } from "./components/choice/Choice";
+import { Result } from "./components/result/Result";
+import { Score } from "./components/score/Score";
 
 function App() {
   return (
@@ -18,7 +20,9 @@ function App() {
           ))}
         </div>
         <Restart />
-        <Choice />
+        <Choice player={""} computer={""} />
+        <Result result={""} />
+        <Score playerScore={""} computerScore={""} />
       </main>
     </>
   );

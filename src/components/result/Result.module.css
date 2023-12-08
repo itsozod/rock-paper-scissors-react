@@ -1,0 +1,10 @@
+.resultContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.result {
+    font-size: 25px;
+    font-weight: bold;
+    color: #e63946;
+}
