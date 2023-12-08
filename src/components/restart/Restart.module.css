@@ -1,0 +1,18 @@
+.restartContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.restartBtn {
+  padding: 8px;
+  border-radius: 12px;
+  border: none;
+  font-size: 17px;
+  background-color: #d62828;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+.restartBtn:hover {
+  background-color: #780000;
+}

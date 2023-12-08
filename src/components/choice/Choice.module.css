@@ -1,0 +1,17 @@
+.choiceContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.playerChoice,
+.computerChoice {
+  margin: 20px;
+  font-size: 25px;
+  font-weight: bold;
+}
+.playerChoice {
+  color: brown;
+}
+.computerChoice {
+  color: green;
+}
