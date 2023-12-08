@@ -1,14 +1,14 @@
 export const weapons = [
   {
     id: 0,
-    weapon: "✊",
+    name: "✊",
   },
   {
     id: 1,
-    weapon: "✋",
+    name: "✋",
   },
   {
     id: 2,
-    weapon: "✌️",
+    name: "✌️",
   },
 ];

@@ -3,3 +3,10 @@
   margin: 0 auto;
   padding: 5px 5px;
 }
+.button-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
