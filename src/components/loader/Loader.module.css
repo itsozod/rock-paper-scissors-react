@@ -1,0 +1,12 @@
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+.loader {
+  width: 130px;
+  height: auto;
+  object-fit: cover;
+}

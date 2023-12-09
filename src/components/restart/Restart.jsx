@@ -1,8 +1,11 @@
 import styles from "./Restart.module.css";
-export const Restart = () => {
+// eslint-disable-next-line react/prop-types
+export const Restart = ({ onClick }) => {
   return (
     <div className={styles.restartContainer}>
-      <button className={styles.restartBtn}>Restart</button>
+      <button onClick={onClick} className={styles.restartBtn}>
+        Restart
+      </button>
     </div>
   );
 };

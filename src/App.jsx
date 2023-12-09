@@ -7,15 +7,34 @@ import { Restart } from "./components/restart/Restart";
 import { Choice } from "./components/choice/Choice";
 import { Result } from "./components/result/Result";
 import { Score } from "./components/score/Score";
+import { Loader } from "./components/loader/Loader";
 import { useState, useEffect } from "react";
 
 function App() {
+  const [loader, setLoader] = useState(false);
   const [player, setPlayer] = useState("?");
   const [computer, setComputer] = useState("?");
   const [playerScore, setPlayerScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
   const [result, setResult] = useState("");
   const [gameOver, setGameOver] = useState(false);
+
+  const refresh = () => {
+    setLoader(true);
+    setPlayer("?");
+    setComputer("?");
+    setPlayerScore(0);
+    setComputerScore(0);
+    setResult("");
+    setGameOver(false);
+    setTimeout(() => {
+      setLoader(false);
+    }, 1500);
+  };
+
+  useEffect(() => {
+    refresh();
+  }, []);
 
   const computerTurn = () => {
     const randomWeapon = Math.floor(Math.random() * weapons.length) + 1;
@@ -64,37 +83,46 @@ function App() {
   useEffect(() => {
     const checkScores = () => {
       if (playerScore === 5) {
-        setResult("Player wins the game!");
+        setResult(`You win the game! ${player} beats ${computer}`);
         setGameOver(true);
       }
       if (computerScore === 5) {
-        setResult("Computer wins the game!");
+        setResult(`Computer wins the game! ${player} is beaten by ${computer}`);
         setGameOver(true);
       }
     };
     checkScores();
-  }, [playerScore, computerScore]);
+  }, [playerScore, computerScore, player, computer]);
 
   return (
     <>
-      <Header />
-      <main>
-        <Info />
-        <div className="button-container">
-          {weapons.map((weapon) => (
-            <Game
-              key={weapon.id}
-              text={weapon.name}
-              onClick={() => playerTurn(weapon.name)}
-              disabled={gameOver}
+      {loader ? (
+        <Loader />
+      ) : (
+        <>
+          <Header />
+          <main>
+            <Info />
+            <div className="button-container">
+              {weapons.map((weapon) => (
+                <Game
+                  key={weapon.id}
+                  text={weapon.name}
+                  onClick={() => playerTurn(weapon.name)}
+                  disabled={gameOver}
+                />
+              ))}
+            </div>
+            <Restart onClick={() => refresh()} />
+            <Choice
+              player={`Player:${player}`}
+              computer={`Computer:${computer}`}
             />
-          ))}
-        </div>
-        <Restart />
-        <Choice player={`Player:${player}`} computer={`Computer:${computer}`} />
-        <Result result={`${result}`} />
-        <Score playerScore={playerScore} computerScore={computerScore} />
-      </main>
+            <Result result={`${result}`} />
+            <Score playerScore={playerScore} computerScore={computerScore} />
+          </main>
+        </>
+      )}
     </>
   );
 }
