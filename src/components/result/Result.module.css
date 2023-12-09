@@ -1,10 +1,16 @@
 .resultContainer {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 .result {
-    font-size: 25px;
-    font-weight: bold;
-    color: #e63946;
+  font-size: 25px;
+  font-weight: bold;
+  color: #e63946;
+}
+@media screen and (max-width: 480px) {
+  .result {
+    font-size: 20px;
+  }
 }
