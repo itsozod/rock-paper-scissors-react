@@ -12,9 +12,12 @@ import { useState, useEffect } from "react";
 function App() {
   const [player, setPlayer] = useState("?");
   const [computer, setComputer] = useState("?");
+  const [playerScore, setPlayerScore] = useState(0);
+  const [computerScore, setComputerScore] = useState(0);
   const [result, setResult] = useState("");
+  const [gameOver, setGameOver] = useState(false);
 
-  function computerTurn() {
+  const computerTurn = () => {
     const randomWeapon = Math.floor(Math.random() * weapons.length) + 1;
 
     switch (randomWeapon) {
@@ -28,15 +31,15 @@ function App() {
         setComputer("✌️");
         break;
     }
-  }
+  };
 
-  function playerTurn(name) {
+  const playerTurn = (name) => {
     setPlayer(name);
     computerTurn();
-  }
+  };
 
   useEffect(() => {
-    function checkWinner() {
+    const checkWinner = () => {
       if (player === "?") {
         setResult("Waiting for the player!!!");
         return;
@@ -49,12 +52,28 @@ function App() {
         (player === "✌️" && computer === "✋")
       ) {
         setResult(`You won! ${player} beats ${computer}`);
+        setPlayerScore((prevScore) => prevScore + 1);
       } else {
         setResult(`You lost! ${player} is beaten by ${computer}`);
+        setComputerScore((prevScore) => prevScore + 1);
       }
-    }
+    };
     checkWinner();
   }, [player, computer]);
+
+  useEffect(() => {
+    const checkScores = () => {
+      if (playerScore === 5) {
+        setResult("Player wins the game!");
+        setGameOver(true);
+      }
+      if (computerScore === 5) {
+        setResult("Computer wins the game!");
+        setGameOver(true);
+      }
+    };
+    checkScores();
+  }, [playerScore, computerScore]);
 
   return (
     <>
@@ -67,13 +86,14 @@ function App() {
               key={weapon.id}
               text={weapon.name}
               onClick={() => playerTurn(weapon.name)}
+              disabled={gameOver}
             />
           ))}
         </div>
         <Restart />
         <Choice player={`Player:${player}`} computer={`Computer:${computer}`} />
         <Result result={`${result}`} />
-        <Score playerScore={""} computerScore={""} />
+        <Score playerScore={playerScore} computerScore={computerScore} />
       </main>
     </>
   );

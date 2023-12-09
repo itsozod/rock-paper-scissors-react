@@ -3,8 +3,8 @@ import styles from "./Score.module.css";
 export const Score = ({ playerScore, computerScore }) => {
   return (
     <div className={styles.scoreContainer}>
-      <p className={styles.playerScore}>0 {playerScore}</p>
-      <p className={styles.computerScore}>0 {computerScore}</p>
+      <p className={styles.playerScore}>{playerScore}</p>
+      <p className={styles.computerScore}>{computerScore}</p>
     </div>
   );
 };
