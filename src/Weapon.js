@@ -12,3 +12,9 @@ export const weapons = [
     name: "✌️",
   },
 ];
+
+export const obj = {
+  1: "✊",
+  2: "✋",
+  3: "✌️",
+};

@@ -2,7 +2,7 @@ import "./App.css";
 import { Header } from "./components/header/Header";
 import { Info } from "./components/info/Info";
 import { Game } from "./components/game/Game";
-import { weapons } from "./Weapon";
+import { weapons, obj } from "./Weapon";
 import { Restart } from "./components/restart/Restart";
 import { Choice } from "./components/choice/Choice";
 import { Result } from "./components/result/Result";
@@ -38,18 +38,19 @@ function App() {
 
   const computerTurn = () => {
     const randomWeapon = Math.floor(Math.random() * weapons.length) + 1;
+    setComputer(obj[randomWeapon]);
 
-    switch (randomWeapon) {
-      case 1:
-        setComputer("✊");
-        break;
-      case 2:
-        setComputer("✋");
-        break;
-      case 3:
-        setComputer("✌️");
-        break;
-    }
+    // switch (randomWeapon) {
+    //   case 1:
+    //     setComputer("✊");
+    //     break;
+    //   case 2:
+    //     setComputer("✋");
+    //     break;
+    //   case 3:
+    //     setComputer("✌️");
+    //     break;
+    // }
   };
 
   const playerTurn = (name) => {
